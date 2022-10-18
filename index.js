@@ -6,15 +6,14 @@ const dotenv = require('dotenv')
 
 dotenv.config();  
 
-const productRoute = require('./routes/product')
-const userRoute = require('./routes/user')
-const categoriesRoute = require('./routes/categories')
-const ContactsRoute = require('./routes/contact')
+const postsRoute = require('./routes/Posts')
+const userRoute = require('./routes/User')
 
 const app = express();
 
  // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
+
 // parse application/json
 app.use(bodyParser.json())
 
@@ -23,10 +22,8 @@ app.use(express.json())
 
 app.use(cors())
 
-app.use('/api/v1/products', productRoute)
+app.use('/api/v1/posts', postsRoute)
 app.use('/api/v1/users', userRoute)
-app.use('/api/v1/categories', categoriesRoute)
-app.use('/api/v1/contact', ContactsRoute)
 
 
 const PORT = process.env.PORT || 5000
